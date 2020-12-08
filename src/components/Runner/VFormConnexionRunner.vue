@@ -60,7 +60,7 @@ export default {
   },
   methods: {
     log() {
-      let url = "http://localhost:5000/runners/login";
+      let url = "https://brocoliserver.herokuapp.com/runners/login";
       this.$refs.form.validate();
       axios
         .get(url, {

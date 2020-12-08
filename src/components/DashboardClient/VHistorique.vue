@@ -85,7 +85,7 @@ export default {
     }
   },
   mounted(){
-    let url = `http://localhost:5000/orders/${this.$store.state.customerId}`
+    let url = `https://brocoliserver.herokuapp.com/orders/${this.$store.state.customerId}`
     axios
     .get(url)
     .then((response) => {

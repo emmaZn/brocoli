@@ -32,7 +32,7 @@ export default {
     // si l'utilisateur est pas connecté rentourne à l'accueil
       this.id = this.$store.state.customerId
       // On recupere les info de l'utilisateur pour pouvoir les afficher
-      let url = `http://localhost:5000/customers/${this.id}`
+      let url = `https://brocoliserver.herokuapp.com/customers/${this.id}`
       axios
         .get(url)
         .then((response) => {
@@ -73,13 +73,13 @@ export default {
       }
       axios({
             method: "DELETE",
-            url: `http://localhost:5000/addrCustomers/${id}`,
+            url: `https://brocoliserver.herokuapp.com/addrCustomers/${id}`,
             headers: { "Content-Type": "application/json" },
           }) 
       this.reloadAddr()    
     },
     reloadAddr() {
-      let url = `http://localhost:5000/customers/${this.id}`
+      let url = `https://brocoliserver.herokuapp.com/customers/${this.id}`
       axios
         .get(url)
         .then((response) => {

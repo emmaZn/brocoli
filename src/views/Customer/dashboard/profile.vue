@@ -55,7 +55,7 @@ export default {
     } else {
       this.id = this.$store.state.customerId
       // On recupere les info de l'utilisateur pour pouvoir les afficher
-      let url = `http://localhost:5000/customers/${this.id}`
+      let url = `https://brocoliserver.herokuapp.com/customers/${this.id}`
       axios
         .get(url)
         .then((response) => {
@@ -122,13 +122,13 @@ export default {
       }
       axios({
             method: "DELETE",
-            url: `http://localhost:5000/addrCustomers/${id}`,
+            url: `https://brocoliserver.herokuapp.com/addrCustomers/${id}`,
             headers: { "Content-Type": "application/json" },
           }) 
       this.reloadAddr()    
     },
     reloadAddr() {
-      let url = `http://localhost:5000/customers/${this.id}`
+      let url = `https://brocoliserver.herokuapp.com/customers/${this.id}`
       axios
         .get(url)
         .then((response) => {
@@ -143,7 +143,7 @@ export default {
         })
     },
     search() {
-      let url = `http://localhost:5000/runners/from/${this.customers[0].id_department}`
+      let url = `https://brocoliserver.herokuapp.com/runners/from/${this.customers[0].id_department}`
       axios
         .get(url)
         .then((response) => {
@@ -167,7 +167,7 @@ export default {
     orderPruduct() {
 
       // console.log('ADRESSE ', this.commande.id_address)
-      let url = "http://localhost:5000/orders/add"
+      let url = "https://brocoliserver.herokuapp.com/orders/add"
       if (this.$refs.form.validate()) {
         axios
           .post(url, {
@@ -190,7 +190,7 @@ export default {
           })
       
         // if (this.) {}
-        url = `http://localhost:5000/productsOrder/${this.commande.id_product}`
+        url = `https://brocoliserver.herokuapp.com/productsOrder/${this.commande.id_product}`
         axios
           .put(url, {
             id: this.commande.id_product,

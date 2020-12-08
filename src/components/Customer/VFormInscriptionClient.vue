@@ -168,7 +168,7 @@ export default {
       console.log('already Log')
     }
     // recupere la liste des departements
-    let url = "http://localhost:5000/departments"
+    let url = "https://brocoliserver.herokuapp.com/departments"
     axios
       .get(url)
       .then((response) => {
@@ -189,7 +189,7 @@ export default {
         return (this.message = "Le mot de passe est invalide");
       }
       // fait appel a l'api pour enregistrer un user
-      let url = "http://localhost:5000/customers/register"
+      let url = "https://brocoliserver.herokuapp.com/customers/register"
       if (this.$refs.form.validate()) {
         axios
           .post(url, {

@@ -103,7 +103,7 @@ export default {
   },
   methods: {
     edit() {
-      let url = "http://localhost:5000/departments";
+      let url = "https://brocoliserver.herokuapp.com/departments";
       axios
         .get(url)
         .then((response) => {

@@ -124,7 +124,7 @@ export default {
     if (this.$store.state.runnerId) {
       this.$router.push("/partenaire/profil");
     }
-    let url = "http://localhost:5000/departments";
+    let url = "https://brocoliserver.herokuapp.com/departments";
     axios
       .get(url)
       .then((response) => {
@@ -136,7 +136,7 @@ export default {
 
   methods: {
     register() {
-      let url = "http://localhost:5000/runners/register";
+      let url = "https://brocoliserver.herokuapp.com/runners/register";
       if (this.object.password != this.object.repassword) {
         return (this.message = "Les mots de passe sont différents ! ");
       }

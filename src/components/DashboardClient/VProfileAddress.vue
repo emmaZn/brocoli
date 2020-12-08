@@ -88,7 +88,7 @@ export default {
     this.id = this.$store.state.customerId;
     console.log(this.address)
     // On recupere les info de l'utilisateur pour pouvoir les afficher
-    let url = `http://localhost:5000/customers/${this.id}`;
+    let url = `https://brocoliserver.herokuapp.com/customers/${this.id}`;
     axios
       .get(url)
       .then((response) => {
@@ -102,7 +102,7 @@ export default {
         console.log("ERREUR", error);
       });
 
-      url = "http://localhost:5000/departments";
+      url = "https://brocoliserver.herokuapp.com/departments";
     axios
       .get(url)
       .then((response) => {
@@ -120,7 +120,7 @@ export default {
     },
     // fonction pour update un adresse
     update() {
-      let url = `http://localhost:5000/addrCustomer/${this.id}`;
+      let url = `https://brocoliserver.herokuapp.com/addrCustomer/${this.id}`;
       console.log(url);
       axios
         .put(url, {
@@ -155,13 +155,13 @@ export default {
       }
       axios({
         method: "DELETE",
-        url: `http://localhost:5000/addrCustomers/${id}`,
+        url: `https://brocoliserver.herokuapp.com/addrCustomers/${id}`,
         headers: { "Content-Type": "application/json" },
       });
       this.reloadAddr();
     },
     reloadAddr() {
-      let url = `http://localhost:5000/customers/${this.id}`;
+      let url = `https://brocoliserver.herokuapp.com/customers/${this.id}`;
       axios
         .get(url)
         .then((response) => {

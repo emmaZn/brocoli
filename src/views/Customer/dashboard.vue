@@ -210,13 +210,13 @@ export default {
     } else {
       this.id = this.$store.state.customerId;
       // On recupere les info de l'utilisateur pour pouvoir les afficher
-      let url = `http://localhost:5000/customers/${this.id}`;
+      let url = `https://brocoliserver.herokuapp.com/customers/${this.id}`;
       axios
         .get(url)
         .then((response) => {
           if (response.data) {
             axios
-              .get(`http://localhost:5000/notifications/${this.id}`)
+              .get(`https://brocoliserver.herokuapp.com/notifications/${this.id}`)
               .then((response2) => {
                 if (response2.data) {
                   this.notifications = response2.data;
@@ -287,7 +287,7 @@ export default {
     updateNotifications() {
       this.drawer = !this.drawer;
       axios
-        .put(`http://localhost:5000/notifications/update/${this.id}`)
+        .put(`https://brocoliserver.herokuapp.com/notifications/update/${this.id}`)
         .then((response) => {
           if (response.data) {
             console.log("read notifications");
@@ -309,13 +309,13 @@ export default {
       }
       axios({
         method: "DELETE",
-        url: `http://localhost:5000/addrCustomers/${id}`,
+        url: `https://brocoliserver.herokuapp.com/addrCustomers/${id}`,
         headers: { "Content-Type": "application/json" },
       });
       this.reloadAddr();
     },
     reloadAddr() {
-      let url = `http://localhost:5000/customers/${this.id}`;
+      let url = `https://brocoliserver.herokuapp.com/customers/${this.id}`;
       axios
         .get(url)
         .then((response) => {
@@ -330,7 +330,7 @@ export default {
         });
     },
     search() {
-      let url = `http://localhost:5000/runners/from/${this.customers[0].id_department}`;
+      let url = `https://brocoliserver.herokuapp.com/runners/from/${this.customers[0].id_department}`;
       axios
         .get(url)
         .then((response) => {
@@ -361,7 +361,7 @@ export default {
       this.commande.addrRunner;
       this.dialog = true;
       console.log(this.runnersTable)
-      // let url = `http://localhost:5000/adresseOrder/${this.id}/${this.commande.addrRunner}`;
+      // let url = `https://brocoliserver.herokuapp.com/adresseOrder/${this.id}/${this.commande.addrRunner}`;
       // axios
       //   .get(url)
       //   .then((response) => {
@@ -375,7 +375,7 @@ export default {
       //   });this.dialog = true;
     },
     orderPruduct() {
-      let url = "http://localhost:5000/orders/add";
+      let url = "https://brocoliserver.herokuapp.com/orders/add";
       if (this.commande.quantity == 0) {
         this.message = "Vous ne pouvez pas commander 0g";
         return this.message;
@@ -405,7 +405,7 @@ export default {
             this.message = "bug commande";
           });
 
-        url = `http://localhost:5000/productsOrder/${this.commande.id_product}`;
+        url = `https://brocoliserver.herokuapp.com/productsOrder/${this.commande.id_product}`;
         axios
           .put(url, {
             id: this.commande.id_product,

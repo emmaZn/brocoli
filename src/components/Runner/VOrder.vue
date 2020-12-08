@@ -200,14 +200,14 @@ export default {
           " livrera votre commande d'ici peu.";
       }
       console.log(this.order)
-      let url = `http://localhost:5000/order/updateWorkflow/${this.order.id}`;
+      let url = `https://brocoliserver.herokuapp.com/order/updateWorkflow/${this.order.id}`;
       axios
         .put(url, {
           workflow: workflow,
         })
         .then(() => {
           axios
-            .post(`http://localhost:5000/notification/add`, {
+            .post(`https://brocoliserver.herokuapp.com/notification/add`, {
               head:head,
               text:text,
               id_customer: this.order.id_customer,

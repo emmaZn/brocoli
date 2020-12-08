@@ -73,7 +73,7 @@ export default {
   mounted() {
     this.id = this.$store.state.customerId
     // recupere les info de l'utilisateur
-    let url = `http://localhost:5000/customers/${this.id}`
+    let url = `https://brocoliserver.herokuapp.com/customers/${this.id}`
     axios
       .get(url)
       .then((response) => {
@@ -94,7 +94,7 @@ export default {
       if (this.object.password != this.object.repassword) {
         return (this.message = "Le mot de passe est invalide");
       }
-      let url = `http://localhost:5000/customers/${this.id}`
+      let url = `https://brocoliserver.herokuapp.com/customers/${this.id}`
       if (this.$refs.form.validate()) {
         if (this.object.password) {
           axios

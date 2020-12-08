@@ -46,7 +46,7 @@ export default {
   mounted() {
     this.id = this.$store.state.addrCustomerId
     // recupere les donnes de l'adresse selectionné
-    let url = `http://localhost:5000/addrCustomer/${this.id}`
+    let url = `https://brocoliserver.herokuapp.com/addrCustomer/${this.id}`
     axios
       .get(url)
       .then((response) => {
@@ -60,7 +60,7 @@ export default {
         console.log("ERREUR", error)
       })
     // recupere la liste des departements
-    url = "http://localhost:5000/departments";
+    url = "https://brocoliserver.herokuapp.com/departments";
     axios
       .get(url)
       .then((response) => {
@@ -72,7 +72,7 @@ export default {
   methods: {
     // met a jour l'addresse selectionné et redirigie vers le dashboard
     update() {
-      let url = `http://localhost:5000/addrCustomer/${this.id}`
+      let url = `https://brocoliserver.herokuapp.com/addrCustomer/${this.id}`
       console.log(url)
       axios
         .put(url, {

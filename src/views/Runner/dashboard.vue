@@ -107,7 +107,7 @@ export default {
       this.$router.push("/");
     } else {
       let id = this.$store.state.runnerId;
-      let url = `http://localhost:5000/runners/${id}`;
+      let url = `https://brocoliserver.herokuapp.com/runners/${id}`;
 
       axios
         .get(url)
@@ -124,7 +124,7 @@ export default {
         .catch((error) => {
           console.log("ERREUR", error);
         });
-      let url2 = `http://localhost:5000/products/${this.$store.state.runnerId}`;
+      let url2 = `https://brocoliserver.herokuapp.com/products/${this.$store.state.runnerId}`;
       axios
         .get(url2)
         .then((response) => {
@@ -147,7 +147,7 @@ export default {
       const moment = require("moment");
       console.log("reload");
       let id = this.$store.state.runnerId;
-      let url = `http://localhost:5000/runners/${id}`;
+      let url = `https://brocoliserver.herokuapp.com/runners/${id}`;
       axios
         .get(url)
         .then((response) => {
@@ -163,7 +163,7 @@ export default {
         .catch((error) => {
           console.log("ERREUR", error);
         });
-      let url2 = `http://localhost:5000/products/${this.$store.state.runnerId}`;
+      let url2 = `https://brocoliserver.herokuapp.com/products/${this.$store.state.runnerId}`;
       axios
         .get(url2)
         .then((response) => {
@@ -188,7 +188,7 @@ export default {
     },
     update(newRunner) {
       console.log("New Runner", newRunner);
-      let url = `http://localhost:5000/runners/${this.runner.id_runner}`;
+      let url = `https://brocoliserver.herokuapp.com/runners/${this.runner.id_runner}`;
       if (newRunner.password) {
         axios
           .put(url, {
@@ -219,11 +219,11 @@ export default {
       }
       axios({
         method: "DELETE",
-        url: `http://localhost:5000/deliveries/${this.runner.id_runner}`,
+        url: `https://brocoliserver.herokuapp.com/deliveries/${this.runner.id_runner}`,
         headers: { "Content-Type": "application/json" },
       }).then(() => {
         axios
-          .post("http://localhost:5000/deliveries/create", {
+          .post("https://brocoliserver.herokuapp.com/deliveries/create", {
             id_runner: this.runner.id_runner,
             departmentsIds: this.runner.departmentsIds,
           })

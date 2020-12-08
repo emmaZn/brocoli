@@ -55,7 +55,7 @@ export default {
     },
     mounted() {
         //recupere la liste des departements
-        let url = "http://localhost:5000/departments"
+        let url = "https://brocoliserver.herokuapp.com/departments"
         axios
         .get(url)
         .then((response) => {
@@ -68,7 +68,7 @@ export default {
         //ajoute une adresse et redirige vers le dashboard
         add() {
             // fait appel a la requete add de l'api
-            let url = "http://localhost:5000/addrCustomer/add"
+            let url = "https://brocoliserver.herokuapp.com/addrCustomer/add"
             console.log(this.object)
             if (this.$refs.form.validate()) {
                 axios

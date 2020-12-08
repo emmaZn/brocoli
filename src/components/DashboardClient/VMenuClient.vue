@@ -73,7 +73,7 @@ export default {
     } else {
       this.id = this.$store.state.customerId;
       // On recupere les info de l'utilisateur pour pouvoir les afficher
-      let url = `http://localhost:5000/customers/${this.id}`;
+      let url = `https://brocoliserver.herokuapp.com/customers/${this.id}`;
       axios
         .get(url)
         .then((response) => {
@@ -97,7 +97,7 @@ export default {
       this.$router.push("/");
     },
     search() {
-      let url = `http://localhost:5000/runners/from/${this.customers[0].id_department}`;
+      let url = `https://brocoliserver.herokuapp.com/runners/from/${this.customers[0].id_department}`;
       axios
         .get(url)
         .then((response) => {

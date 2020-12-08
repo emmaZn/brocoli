@@ -149,7 +149,7 @@ export default {
   },
   methods: {
     addProduct() {
-      let url = "http://localhost:5000/products/new";
+      let url = "https://brocoliserver.herokuapp.com/products/new";
       axios
         .post(url, {
           label: this.newProduct.label,
@@ -173,7 +173,7 @@ export default {
       else return 'white'
     },
     edit(product) {
-      let url = "http://localhost:5000/categories";
+      let url = "https://brocoliserver.herokuapp.com/categories";
       axios
         .get(url)
         .then((response) => {
@@ -194,7 +194,7 @@ export default {
       this.toDeleteId = product.id_product;
       console.log("product Id to delete", this.toDeleteId)
       this.dialogConfirm = true;
-      // let url = `http://localhost:5000/products/${product.id_product}`;
+      // let url = `https://brocoliserver.herokuapp.com/products/${product.id_product}`;
       // axios
       //   .delete(url)
       //   .then((response) => {
@@ -206,7 +206,7 @@ export default {
     remove() {
       let id=this.toDeleteId
       console.log("ID", id)
-      let url = `http://localhost:5000/products/${id}`;
+      let url = `https://brocoliserver.herokuapp.com/products/${id}`;
       axios
         .delete(url)
         .then((response) => {
@@ -228,7 +228,7 @@ export default {
     },
 
     updateProduct() {
-      let url = `http://localhost:5000/products/${this.newProduct.id_product}`;
+      let url = `https://brocoliserver.herokuapp.com/products/${this.newProduct.id_product}`;
       axios
         .put(url, {
           id: this.newProduct.id_product,
