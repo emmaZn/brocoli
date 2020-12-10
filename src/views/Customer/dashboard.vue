@@ -122,7 +122,7 @@
             >
           </v-card-actions>
         </v-card>
-        <span v-if="empty" class="">{{ empty }}</span>
+        <span v-if="empty" class=""><v-icon color="secondary" class="mb-2 mr-2 ml-2">mdi-emoticon-sad-outline</v-icon>{{ empty }}</span>
       </div>
       <v-dialog v-model="dialog" max-width="1000">
         <v-card class="dialog">
@@ -399,7 +399,6 @@ export default {
                 item.firstname = element.firstname;
                 item.lastname = element.lastname;
                 this.runnersTable.push(item);
-                this.dialogConfirm = false;
               });
             });
             this.empty = null;
@@ -411,6 +410,7 @@ export default {
             "Votre département ne dispose pas de livreur ! Miguel arrive bientôt !";
           //ajouter un message si null
         });
+        this.dialogConfirm = false;
     },
     commander(produit, runner) {
       this.commande.name_product = produit.label;
