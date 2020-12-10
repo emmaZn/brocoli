@@ -402,6 +402,10 @@ export default {
               });
             });
             this.empty = null;
+            // console.log("product",this.runnersTable)
+            if (!this.runnersTable.length){
+              this.empty="Votre département ne dispose pas de livreur ! Miguel arrive bientôt !"
+            }
           }
         })
         .catch((error) => {

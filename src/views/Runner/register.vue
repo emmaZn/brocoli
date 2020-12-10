@@ -55,7 +55,7 @@
         /^(?:(?:\+|00)33[\s.-]{0,3}(?:\(0\)[\s.-]{0,3})?|0)[1-9](?:(?:[\s.-]?\d{2}){4}|\d{2}(?:[\s.-]?\d{3}){2})$/
         .test(
           v
-        ) || "Num�ro incorrect",
+        ) || "Numéro incorrect",
       ],
       emailRules: [
         (v) => !!v || "E-mail requis",
@@ -84,7 +84,7 @@
         }
         if (!this.object.departmentsIds.length) {
           return (this.message =
-            "Veuillez rentrer les d�partements dans lesquels vous travaillez");
+            "Veuillez rentrer les départements dans lesquels vous travaillez");
         }
         if (this.$refs.form.validate()) {
           axios
@@ -104,7 +104,7 @@
             }) //c'est un objet
             .catch((error) => {
               console.log("PAS INSCRIT", error);
-              this.message = "Vous etes d�j� inscrit !";
+              this.message = "Vous etes déjà inscrit !";
             });
         }
       },

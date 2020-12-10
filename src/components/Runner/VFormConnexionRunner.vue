@@ -12,7 +12,6 @@
         <v-text-field
           class="text-field"
           v-model="object.password"
-          :counter="10"
           :rules="required"
           label="Mot de passe"
           :append-icon="value ? 'mdi-eye-off' : 'mdi-eye'"

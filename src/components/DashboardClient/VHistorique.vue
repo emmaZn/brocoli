@@ -91,6 +91,11 @@ export default {
   mounted(){
     const moment = require('moment')
     let url = `http://brocoliserver.herokuapp.com/orders/${this.$store.state.customerId}`
+    let val=false
+    while(!val){
+      this.sleep(2000)
+      val=true
+    }
     axios
     .get(url)
     .then((response) => {
@@ -136,7 +141,14 @@ export default {
         date: "",
       }
     },
-  },
+   sleep(milliseconds) {
+      const date = Date.now();
+      let currentDate = null;
+      do {
+        currentDate = Date.now();
+      } while (currentDate - date < milliseconds);
+    }
+      },
 }
 </script>
 

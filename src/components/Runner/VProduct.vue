@@ -30,7 +30,7 @@
             >
               Modifier
             </v-btn>
-            <v-btn
+            <!-- <v-btn
               class="ml-2 mt-5"
               outlined
               rounded
@@ -38,7 +38,7 @@
               @click="ask(product)"
             >
               Supprimer
-            </v-btn>
+            </v-btn> -->
           </v-card-actions>
         </div>
 
@@ -104,6 +104,7 @@
             required
             type="number"
             suffix="gr"
+            min="0"
           ></v-text-field>
           <v-text-field
             v-model="newProduct.price"
@@ -111,6 +112,8 @@
             required
             type="number"
             suffix="€/gr"
+            min="1"
+
           ></v-text-field>
         </v-card-text>
         <v-card-actions>

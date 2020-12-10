@@ -2,32 +2,32 @@
 <template>
   <div class="container">
     <v-form id="form" ref="form" v-model="valid" lazy-validation>
-      <div class="text-field-container">
-        <div class="name-container">
-          <v-row>
-            <v-col cols="6">
+      <div class="text-field-container ma-5">
+          <v-row justify="center">
+          <v-col cols="12" class="mt-0 pt-0">
+            <v-row>
+            <v-col cols="12" sm="6" md="6" lg="6" class="mt-0 pt-0 mb-0 pb-0">
+
               <v-text-field
-                class=""
                 v-model="object.firstname"
                 :rules="required"
                 label="Prénom"
                 required
               ></v-text-field>
             </v-col>
-            <v-col cols="6">
+            <v-col cols="12" sm="6" md="6" lg="6" class="mt-0 pt-0 mb-0 pb-0">
               <v-text-field
-                class="text-field pl-2"
                 v-model="object.lastname"
                 :rules="required"
                 label="Nom"
                 required
               ></v-text-field>
             </v-col>
-          </v-row>
-        </div>
+            </v-row>
+
+
 
         <v-text-field
-          class="text-field"
           v-model="object.password"
           :rules="required"
           label="Mot de passe"
@@ -37,7 +37,6 @@
           :type="value1 ? 'password' : 'text'"
         ></v-text-field>
         <v-text-field
-          class="text-field"
           v-model="object.repassword"
           :rules="required"
           label="Confirmation mot de passe"
@@ -47,7 +46,6 @@
           :type="value2 ? 'password' : 'text'"
         ></v-text-field>
         <v-text-field
-          class="text-field"
           v-model="object.phone"
           :rules="PhoneRules"
           label="Téléphone"
@@ -55,7 +53,6 @@
         ></v-text-field>
 
         <v-text-field
-          class="text-field"
           v-model="object.mail"
           :rules="emailRules"
           label="E-mail"
@@ -63,7 +60,6 @@
         ></v-text-field>
 
         <v-autocomplete
-          class="text-field"
           v-model="object.departmentsIds"
           :items="departments"
           :item-text="(item) => item.code + ' - ' + item.nom"
@@ -74,16 +70,18 @@
           label="Lieux de travail"
           multiple
         ></v-autocomplete>
-        <span v-if="message" class="alert">
+        <div v-if="message" class="alert">
           <img
             id="warning-icon"
             src="../../assets/warning.svg"
             alt="warning logo"
-          />{{ message }}</span
+          />{{ message }}</div
         >
-        <v-btn rounded color="primary" class="btn-large" @click="register">
+        <v-btn rounded block color="primary" class="btn-large" @click="register">
           Inscription</v-btn
         >
+          </v-col>
+        </v-row>
       </div>
     </v-form>
   </div>
@@ -137,11 +135,11 @@ export default {
     register() {
       let url = "http://brocoliserver.herokuapp.com/runners/register";
       if (this.object.password != this.object.repassword) {
-        return (this.message = "Les mots de passe sont diff�rents ! ");
+        return (this.message = "Les mots de passe sont différents ! ");
       }
       if (!this.object.departmentsIds.length) {
         return (this.message =
-          "Veuillez rentrer les d�partements dans lesquels vous travaillez");
+          "Veuillez rentrer les départements dans lesquels vous travaillez");
       }
       if (this.$refs.form.validate()) {
         axios
@@ -161,7 +159,7 @@ export default {
           }) //c'est un objet
           .catch((error) => {
             console.log("PAS INSCRIT", error);
-            this.message = "Vous etes d�j� inscrit !";
+            this.message = "Vous etes déjà inscrit !";
           });
       }
     },
@@ -171,9 +169,25 @@ export default {
 
 <style lang="scss">
 @media screen and (max-width:767px){
+  .alert{
+    margin-top:50px;
+    height:50px;
+    width:100%!important;
+    display:none
+  }
+  .v-input{
+    height:40px
+  }
+  .v-btn{
+    margin-top:20px!important;
+  }
   .container{ 
-  width: 98vw!important;
-  height: 70vh !important;
+  width: 93vw!important;
+  height: auto !important;
+  padding-top:0!important;
+  border-radius: 25px;
+
+  
     
     .btn-wrapper {
       margin-top: 0em !important;
@@ -187,6 +201,7 @@ export default {
     width: 35vw !important; 
     height: 6vh;
     font-size: 20px!important;
+        margin-top:2px!important;
   }
 
 .runner-sign-in {
@@ -206,17 +221,12 @@ export default {
 }
 //text field
 .text-field-container {
-  display: flex;
-  flex-direction: column;
   align-items: center;
-  .text-field {
-    width: 65vw;
-    height: 3em;
-  }
-  .name-container {
-    width: 60vmin;
-    height: 15vmin;
-  }
+  // .name-container {
+  //   margin-top:5%;
+  //   width: 100%;
+  //   height: 8vmin;
+  // }
 
 
 }
@@ -227,12 +237,8 @@ export default {
   height: 5vh !important;
 }
 .alert {
-  margin-top: 2em;
-  width: 60vmin;
+  width: 100%;
   color: white;
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
   border: solid 1px red;
   padding: 0.2em;
   background-color: red;
