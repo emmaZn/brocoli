@@ -29,5 +29,10 @@ overflow-y: hidden;
    top:0;
   bottom:0;
 }
+h1{
+  font-weight: 900;
+  color: rgb(73, 73, 73);
+  font-family:'Poppins', sans-serif; 
+}
 
 </style>

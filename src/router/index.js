@@ -25,35 +25,17 @@ const routes = [{
             import ( /* webpackChunkName: "profile" */ '../views/Customer/dashboard.vue')
     },
     {
-        path: '/client/modifier/adresse',
-        name: 'UpadteAddrClient',
-        component: () =>
-            import ( /* webpackChunkName: "profile" */ '../views/Customer/updateAddr.vue')
-    },
-    {
-        path: '/client/modifier/profil',
-        name: 'UpadteProfilClient',
-        component: () =>
-            import ( /* webpackChunkName: "profile" */ '../views/Customer/updateProfil.vue')
-    },
-    {
-        path: '/client/ajouter/adresse',
-        name: 'AddAddrClient',
-        component: () =>
-            import ( /* webpackChunkName: "profile" */ '../views/Customer/addAddress.vue')
-    },
-    {
         path: '/client/commandes',
         name: 'Commandes Client',
         component: () =>
             import ( /* webpackChunkName: "profile" */ '../views/Customer/dashboard/commandes.vue')
     },
     {
-        path:'/client/profile', 
-        name:'Client Profile', 
-        component: () => 
-            import('../views/Customer/dashboard/profile.vue')
-    }, 
+        path: '/client/profil',
+        name: 'Client Profil',
+        component: () =>
+            import ('../views/Customer/dashboard/profile.vue')
+    },
 
     //Routes Partenaires
     {
@@ -77,7 +59,7 @@ const routes = [{
 ]
 
 const router = new VueRouter({
-    mode:'history',
+    mode: 'history',
     base: process.env.BASE_URL,
     routes
 })

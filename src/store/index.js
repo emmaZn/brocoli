@@ -12,7 +12,7 @@ export default new Vuex.Store({
     state: {
         customerId: null,
         runnerId: null,
-        addrCustomerId: null
+        addrCustomerId: null,
     },
     // mutations sont les fonctions quoi permettent de modifier les state
     mutations: {
@@ -20,9 +20,11 @@ export default new Vuex.Store({
         loginCustomer(state, customerId) {
             state.customerId = customerId;
         },
+
         // logoutCustomer(state) A la deconnexion reinitialise customerId à null pour la prochaine connection
         logoutCustomer(state) {
             state.customerId = null;
+            state.addrCustomerId = null
         },
         // loginRunner(state, runnerId) stocke dans runnerId l'id du Runner qui est connectée
         loginRunner(state, runnerId) {
@@ -37,7 +39,8 @@ export default new Vuex.Store({
         },
         removeAddrCustomer(state) {
             state.addrCustomerId = null
-        }
+        },
+
 
     },
     actions: {

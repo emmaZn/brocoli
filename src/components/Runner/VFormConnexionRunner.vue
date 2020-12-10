@@ -60,7 +60,7 @@ export default {
   },
   methods: {
     log() {
-      let url = "https://brocoliserver.herokuapp.com/runners/login";
+      let url = "http://brocoliserver.herokuapp.com/runners/login";
       this.$refs.form.validate();
       axios
         .get(url, {
@@ -87,6 +87,40 @@ export default {
 
 <style lang="scss" scoped>
 //Variables
+@media screen and (max-width:767px){
+  .container{ 
+  width: 98vw!important;
+  height: 70vh !important;
+    
+    .btn-wrapper {
+      margin-top: 1em !important;
+    }
+  }
+
+  .round{
+    width: 35vw !important; 
+    height: 6vh;
+    font-size: 20px!important;
+  }
+
+.runner-sign-in {
+  width: 78vw !important;
+  margin-top: -111em;
+ 
+  }
+
+  .alert {
+  margin-top: 1em;
+  width: 16em !important;
+  padding: 0.2em;
+  position: center;
+  #warning-icon {
+    width: 1.5em;
+    margin-right: 0.5em;
+    }
+  }
+}
+
 
 .container {
   background-color: white;
@@ -156,4 +190,5 @@ font-size: 1.5em;
     margin-right: 0.5em;
   }
 }
+ 
 </style>

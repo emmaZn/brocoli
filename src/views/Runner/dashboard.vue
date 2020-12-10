@@ -7,14 +7,15 @@
   >
     <v-row>
       <v-spacer />
-      <v-menu offset-y min-width="260" class="mr-10 mt-5">
+      <v-btn x-small dark color="secondary" rounded @click="logout()" class="mt-2">Se déconnecter</v-btn>
+      <v-menu offset-y min-width="260" class="mr-10 mt-5 hidden-md-and-down">
         <template v-slot:activator="{ on, attrs }">
           <v-btn
             v-bind="attrs"
             rounded
             v-on="on"
             x-large
-            class="arrow-btn mr-10 mt-5"
+            class="arrow-btn mr-10 mt-5 hidden-md-and-down"
             width="260"
             @click="rotate()"
           >
@@ -54,9 +55,9 @@
       </v-menu>
     </v-row>
     <v-row justify="center">
-      <v-col cols="12" lg="10" md="10" class="mt-14">
-      <img src="../../assets/logoBlanc.svg" alt="" class="white-logo" />
-        <v-card height="750" style="border-radius: 25px" class="pt-10"
+      <v-col cols="12" lg="10" md="10" class="mt-6">
+        <img src="../../assets/logoBlanc.svg" alt="" class="white-logo" />
+        <v-card height="750" style="border-radius: 25px" class="carte pt-10"
           ><v-tabs grow color="#515bae" v-model="tab" align-with-title>
             <v-tabs-slider color="#515bae"></v-tabs-slider>
             <v-tab class="ma-0"> Commande </v-tab>
@@ -64,7 +65,11 @@
             <v-tab> Profil </v-tab>
             <v-tabs-items v-model="tab">
               <v-tab-item>
-                <v-order :orders="runner.orders" :runner="runner" @reload="reload()"></v-order>
+                <v-order
+                  :orders="runner.orders"
+                  :runner="runner"
+                  @reload="reload()"
+                ></v-order>
               </v-tab-item>
               <v-tab-item>
                 <v-product :products="products" @reload="reload()"></v-product>
@@ -107,7 +112,7 @@ export default {
       this.$router.push("/");
     } else {
       let id = this.$store.state.runnerId;
-      let url = `https://brocoliserver.herokuapp.com/runners/${id}`;
+      let url = `http://brocoliserver.herokuapp.com/runners/${id}`;
 
       axios
         .get(url)
@@ -124,7 +129,7 @@ export default {
         .catch((error) => {
           console.log("ERREUR", error);
         });
-      let url2 = `https://brocoliserver.herokuapp.com/products/${this.$store.state.runnerId}`;
+      let url2 = `http://brocoliserver.herokuapp.com/products/${this.$store.state.runnerId}`;
       axios
         .get(url2)
         .then((response) => {
@@ -147,7 +152,7 @@ export default {
       const moment = require("moment");
       console.log("reload");
       let id = this.$store.state.runnerId;
-      let url = `https://brocoliserver.herokuapp.com/runners/${id}`;
+      let url = `http://brocoliserver.herokuapp.com/runners/${id}`;
       axios
         .get(url)
         .then((response) => {
@@ -163,7 +168,7 @@ export default {
         .catch((error) => {
           console.log("ERREUR", error);
         });
-      let url2 = `https://brocoliserver.herokuapp.com/products/${this.$store.state.runnerId}`;
+      let url2 = `http://brocoliserver.herokuapp.com/products/${this.$store.state.runnerId}`;
       axios
         .get(url2)
         .then((response) => {
@@ -188,7 +193,7 @@ export default {
     },
     update(newRunner) {
       console.log("New Runner", newRunner);
-      let url = `https://brocoliserver.herokuapp.com/runners/${this.runner.id_runner}`;
+      let url = `http://brocoliserver.herokuapp.com/runners/${this.runner.id_runner}`;
       if (newRunner.password) {
         axios
           .put(url, {
@@ -219,11 +224,11 @@ export default {
       }
       axios({
         method: "DELETE",
-        url: `https://brocoliserver.herokuapp.com/deliveries/${this.runner.id_runner}`,
+        url: `http://brocoliserver.herokuapp.com/deliveries/${this.runner.id_runner}`,
         headers: { "Content-Type": "application/json" },
       }).then(() => {
         axios
-          .post("https://brocoliserver.herokuapp.com/deliveries/create", {
+          .post("http://brocoliserver.herokuapp.com/deliveries/create", {
             id_runner: this.runner.id_runner,
             departmentsIds: this.runner.departmentsIds,
           })
@@ -237,7 +242,10 @@ export default {
 </script>
 
 <style scoped>
-body {
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@600&display=swap');
+
+* {
+  font-family: 'Rubik', sans-serif;
 }
 #avatar {
   position: absolute;
@@ -246,22 +254,40 @@ body {
   z-index: 5;
 }
 .white-logo {
-  height: 10vmin;
-  width: 10vmin;
-  top:8%;
-  left:48%;
+  height: 100px;
+  width: 100px;
+  top: 8%;
+  left: 48%;
   position: absolute;
-  z-index:10
+  z-index: 10;
 }
 /* button {
   position: absolute;
   right: 2%;
   top: 3%;
 } */
-.scroll {
-  overflow-y: scroll;
-}
+
 .v-menu__content {
   border-radius: 50px;
+}
+@media screen and (max-width: 600px) {
+  .white-logo {
+    height:70px;
+    width:70px;
+    top: 2%;
+    left: 40%;
+    z-index: 10;
+  }
+  .row {
+    margin: 0;
+  }
+  .v-menu__content {
+  border-radius: 0px;
+  z-index:300;
+}
+  .carte {
+    height: fit-content !important;
+    min-height:85vh
+  }
 }
 </style>

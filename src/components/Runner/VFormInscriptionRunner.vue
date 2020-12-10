@@ -1,3 +1,4 @@
+  
 <template>
   <div class="container">
     <v-form id="form" ref="form" v-model="valid" lazy-validation>
@@ -90,7 +91,6 @@
 
 <script>
 import axios from "axios";
-
 export default {
   data: () => ({
     valid: false,
@@ -124,7 +124,7 @@ export default {
     if (this.$store.state.runnerId) {
       this.$router.push("/partenaire/profil");
     }
-    let url = "https://brocoliserver.herokuapp.com/departments";
+    let url = "http://brocoliserver.herokuapp.com/departments";
     axios
       .get(url)
       .then((response) => {
@@ -133,16 +133,15 @@ export default {
       }) //c'est un objet
       .catch((error) => console.log(console.log("Departments error ", error)));
   },
-
   methods: {
     register() {
-      let url = "https://brocoliserver.herokuapp.com/runners/register";
+      let url = "http://brocoliserver.herokuapp.com/runners/register";
       if (this.object.password != this.object.repassword) {
-        return (this.message = "Les mots de passe sont différents ! ");
+        return (this.message = "Les mots de passe sont diff�rents ! ");
       }
       if (!this.object.departmentsIds.length) {
         return (this.message =
-          "Veuillez rentrer les départements dans lesquels vous travaillez");
+          "Veuillez rentrer les d�partements dans lesquels vous travaillez");
       }
       if (this.$refs.form.validate()) {
         axios
@@ -162,7 +161,7 @@ export default {
           }) //c'est un objet
           .catch((error) => {
             console.log("PAS INSCRIT", error);
-            this.message = "Vous etes déjà inscrit !";
+            this.message = "Vous etes d�j� inscrit !";
           });
       }
     },
@@ -171,9 +170,34 @@ export default {
 </script>
 
 <style lang="scss">
+@media screen and (max-width:767px){
+  .container{ 
+  width: 98vw!important;
+  height: 70vh !important;
+    
+    .btn-wrapper {
+      margin-top: 0em !important;
+    }
+    .text-field-container{
+      font-size: 0px;
+    }
+  }
+
+  .round{
+    width: 35vw !important; 
+    height: 6vh;
+    font-size: 20px!important;
+  }
+
+.runner-sign-in {
+  width: 78vw !important;
+  margin-top: -111em;
+ 
+  }
+}
 .container {
   background: white;
-  width: 70vmin;
+  width: 72vmin;
   height: 65vh;
   border-radius: 50px;
   margin-top: 4vh;
@@ -185,15 +209,16 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 1em;
   .text-field {
-    width: 60vmin;
-    height: 4em;
+    width: 65vw;
+    height: 3em;
   }
   .name-container {
-    display: flex;
     width: 60vmin;
+    height: 15vmin;
   }
+
+
 }
 //buttons
 .btn-large {
@@ -217,4 +242,5 @@ export default {
     margin-right: 0.5em;
   }
 }
+
 </style>

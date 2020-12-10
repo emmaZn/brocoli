@@ -20,15 +20,15 @@
           required
         >
         </v-text-field>
-        <a href="" class="forgot-psw">mot de passe oublié ?</a>
       </div>
-      <span v-if="message" class="alert ma-auto mt-10">
+      <v-row justify="center"> <span v-if="message" class="alert">
         <img
           id="warning-icon"
           src="./../assets/warning.svg"
           alt="warning logo"
         />{{ message }}</span
-      >
+      ></v-row>
+     
       <div class="btn-wrapper">
         <button class="round sign-in" type="button" @click="log()">
           Connexion
@@ -75,7 +75,7 @@ export default {
   methods: {
     log() {
       // const self=this
-      let url = "https://brocoliserver.herokuapp.com/customers/login";
+      let url = "http://brocoliserver.herokuapp.com/customers/login";
       this.$refs.form.validate();
       axios
         .get(url, {
@@ -104,6 +104,38 @@ export default {
 //Variables
 $color1-btn: #6fce91;
 
+@media screen and (max-width:767px){
+  .container{ 
+  width: 98vw!important;
+  height: 70vh !important;
+    
+    .btn-wrapper {
+      margin-top: 1em !important;
+    }
+  }
+
+  .round{
+    width: 35vw !important; 
+    height: 6vh;
+    font-size: 20px!important;
+  }
+
+.runner-sign-in {
+  width: 78vw !important;
+  margin-top: -111em;
+ 
+}
+
+.alert {
+  width: 18em!important;
+
+  #warning-icon {
+    width: 1.5em;
+    margin-right: 0.5em;
+  }
+
+ }
+}
 .container {
   background-color: white;
   height: 60vh;
@@ -131,6 +163,7 @@ $color1-btn: #6fce91;
     }
   }
 }
+
 //buttons
 .round {
   font-size: 1.5em;
@@ -168,7 +201,7 @@ $color1-btn: #6fce91;
   color: $color1-btn;
   width: 21em;
   justify-self: center;
-  margin-top: -1em;
+  // margin-top: -4em;
   &:hover {
     color: white;
     background-color: $color1-btn;
@@ -186,7 +219,6 @@ $color1-btn: #6fce91;
   }
 }
 .alert {
-  margin-top: 1em;
   width: 30em;
   color: white;
   display: flex;
@@ -201,4 +233,5 @@ $color1-btn: #6fce91;
     margin-right: 0.5em;
   }
 }
+
 </style>

@@ -2,7 +2,7 @@
   <div class="home">
     <div class="header">
       <router-link :to="{ name: 'Home' }">
-        <button class="rounded rounded-left">Client ?</button>
+        <button class="rounded rounded-left">Iencli</button>
       </router-link>
       <img
         class="logo"
@@ -65,7 +65,6 @@
 <script>
 // @ is an alias to /src
 import VFormConnexionRunner from "../../components/Runner/VFormConnexionRunner";
-
 export default {
   name: "authentification",
   components: {
@@ -76,8 +75,34 @@ export default {
 
 <style lang="scss" scoped>
 $color1-btn: #ffaaaa;
+@media screen and (max-width:700px){
+.logo {
+    height: auto !important;
+    width: 75px;
+    margin-top: 1% !important
+  }
+  .waves {
+    display: none;
+  }
+  .home {
+  height: 100%;
+  background: linear-gradient(180deg, #9bc9ff 0%, #515bae 100%);
+  display:inline-block;
+  .rounded {
+    font-size: 12px!important;
+    top: 20px;
+    margin-right: -33px;
+    height: 2vh;
+    width: 1vw;
+  }
+  h1 {
+  font-weight: 900;
+  font-size: 40px !important;
+  }
+  
+ }
 
-
+}
 .home {
   height: 100%;
   padding: 0px;
@@ -85,7 +110,6 @@ $color1-btn: #ffaaaa;
   flex-direction: column;
   align-items: center;
   background: linear-gradient(180deg, #9bc9ff 0%, #515bae 100%);
-
   .header {
     display: flex;
     flex-direction: row;
@@ -126,11 +150,8 @@ $color1-btn: #ffaaaa;
   margin-top: 3vh;
   text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.4);
 }
-
 //logo animation
-
 @keyframes popLogo {
-
   0% {
     transform: scale(0);
   }
@@ -156,7 +177,6 @@ $color1-btn: #ffaaaa;
   margin-top: 5vh;
   animation: 1s ease-in-out 0s 1 popLogo;
 }
-
 // Waves and waves animation, credits : GoodKatz (https://codepen.io/goodkatz/details/LYPGxQz)
 .waves {
   margin: 0px;
@@ -192,4 +212,5 @@ $color1-btn: #ffaaaa;
     transform: translate3d(85px, 0, 0);
   }
 }
+
 </style>

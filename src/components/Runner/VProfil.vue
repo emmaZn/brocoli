@@ -1,7 +1,7 @@
 <template>
   <div>
     <v-card flat>
-      <v-card-text class="pa-16">
+      <v-card-text class="profil pa-16">
         <h2>{{ runner.lastname }} {{ runner.firstname }}</h2>
 
         <v-text-field
@@ -54,8 +54,7 @@
         <v-card v-if="message" dark color="warning"> {{ message }}</v-card>
       </v-card-text>
 
-      <v-card-actions>
-        <v-spacer></v-spacer>
+      <v-card-actions class="icon">
 
         <v-btn icon class="ma-2">
           <v-icon v-if="!editMode" large color="primary" @click="edit()"
@@ -103,7 +102,7 @@ export default {
   },
   methods: {
     edit() {
-      let url = "https://brocoliserver.herokuapp.com/departments";
+      let url = "http://brocoliserver.herokuapp.com/departments";
       axios
         .get(url)
         .then((response) => {
@@ -127,5 +126,14 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
+@media screen and (max-width: 600px) {
+  .v-card__text{
+    padding: 30px!important;
+  }
+  .icon {
+    display: flex;
+    justify-content: space-between;
+  }
+}
 </style>

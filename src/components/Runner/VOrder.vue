@@ -1,5 +1,5 @@
 <template>
-  <div class="ma-16">
+  <div class="tata ma-16">
     <v-data-table
       :headers="headers"
       :items="orders"
@@ -17,7 +17,7 @@
             class="item-row"
             @click="handleClick(item)"
           >
-            <td>{{ item.id_order }}</td>
+            <td class="display">{{ item.id_order }}</td>
             <td>{{ item.name }}</td>
             <td>{{ item.date }}</td>
             <v-chip
@@ -39,6 +39,7 @@
         </tbody>
       </template>
     </v-data-table>
+
     <v-pagination
       v-model="page"
       color="#515bae"
@@ -71,17 +72,17 @@
             </v-card-text>
           </div>
 
-          <v-avatar class="ma-3" size="200" tile>
+          <v-avatar class="ma-3 hidden-md-and-down" size="200" tile>
             <v-img src="../../assets/marijuana.jpg"></v-img>
           </v-avatar>
         </div>
 
         <v-card-actions v-if="order.workflow == 'En attente'">
-          <v-btn color="primary" dark @click="updateWorkflow('Validée')">
+          <v-btn color="primary" class="btn" dark @click="updateWorkflow('Validée')">
             Valider la commande
           </v-btn>
           <v-spacer />
-          <v-btn color="warning" dark @click="updateWorkflow('Annulée')">
+          <v-btn color="warning"  class="btn" dark @click="updateWorkflow('Annulée')">
             Annuler la commande</v-btn
           >
         </v-card-actions>
@@ -110,7 +111,7 @@ export default {
       dialogConfirm: false,
       page: 1,
       pageCount: 0,
-      itemsPerPage: 10,
+      itemsPerPage: 8,
       order: {
         id: "",
         workflow: "",
@@ -148,7 +149,7 @@ export default {
           qtte: e.qtte,
           total: e.prix,
         },
-        id_customer:e.id_customer,
+        id_customer: e.id_customer,
         road: e.road,
         zip: e.zip,
       };
@@ -199,25 +200,25 @@ export default {
           this.runner.lastname +
           " livrera votre commande d'ici peu.";
       }
-      console.log(this.order)
-      let url = `https://brocoliserver.herokuapp.com/order/updateWorkflow/${this.order.id}`;
+      console.log(this.order);
+      let url = `http://brocoliserver.herokuapp.com/order/updateWorkflow/${this.order.id}`;
       axios
         .put(url, {
           workflow: workflow,
         })
         .then(() => {
           axios
-            .post(`https://brocoliserver.herokuapp.com/notification/add`, {
-              head:head,
-              text:text,
+            .post(`http://brocoliserver.herokuapp.com/notification/add`, {
+              head: head,
+              text: text,
               id_customer: this.order.id_customer,
-              read: false
+              read: false,
             })
             .then((response) => {
-              console.log("Updated Order Workflow", response.data)
-              this.dialogConfirm = false
-              this.initOrder()
-              this.$emit("reload")
+              console.log("Updated Order Workflow", response.data);
+              this.dialogConfirm = false;
+              this.initOrder();
+              this.$emit("reload");
             });
         })
         .catch((error) => console.log("Order error ", error));
@@ -226,5 +227,25 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
+.toto {
+  margin: 0 !important;
+  overflow-y: scroll !important;
+  display: flex !important;
+}
+.display {
+  display: block;
+}
+@media screen and (max-width: 600px) {
+  .tata {
+    margin: 0 !important;
+  }
+  .btn{
+    width:40vw;
+    font-size:0.65em!important;
+  }
+  .display {
+    display: none;
+  }
+}
 </style>
