@@ -46,7 +46,9 @@
           :item-text="(item) => item.code + ' - ' + item.nom" :item-value="(item) => item.id_department" chips
           :rules="required" required label="Departement"></v-autocomplete>
         <span v-if="message" class="alert">
-          <img id="warning-icon" src="../../assets/warning.svg" alt="warning logo" />{{ message }}
+          <img id="warning-icon" 
+          src="../../assets/warning.svg" 
+          alt="warning logo" />{{ message }}
         </span>
         <v-btn rounded color="primary" class="btn-large" @click="register"> Inscription</v-btn>
       </div>
